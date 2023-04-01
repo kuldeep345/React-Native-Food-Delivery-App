@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import CategoryCard from './CategoryCard'
+import client, { urlFor } from '../sanity'
 
 const Categories = () => {
+
+    const [categories , setCategories ] = useState([])
+
+    useEffect(() => {
+      client.fetch(`*[_type=="category"]`).then((data)=>{
+        setCategories(data)
+      })
+    }, [])
+    
+
   return (
     <ScrollView
         horizontal
@@ -11,15 +22,14 @@ const Categories = () => {
         }}
         showsHorizontalScrollIndicator={false}
     >
-
-        <CategoryCard imgUrl='https://links.papareact.com/gn7' title="testing 1"/>
-        <CategoryCard imgUrl='https://links.papareact.com/gn7' title="testing 2"/>
-        <CategoryCard imgUrl='https://links.papareact.com/gn7' title="testing 3"/>
-        <CategoryCard imgUrl='https://links.papareact.com/gn7' title="testing 4"/>
-        <CategoryCard imgUrl='https://links.papareact.com/gn7' title="testing 5"/>
-        <CategoryCard imgUrl='https://links.papareact.com/gn7' title="testing 6"/>
-        <CategoryCard imgUrl='https://links.papareact.com/gn7' title="testing 7"/>
-        <CategoryCard imgUrl='https://links.papareact.com/gn7' title="testing 8"/>
+      {categories.map((category)=>(
+        <CategoryCard 
+        key={category._id}
+        imgUrl={urlFor(category.image).width(200).url()}
+        title={category.name}
+        />
+        ))}
+    
 
     </ScrollView>
   )
