@@ -35,8 +35,8 @@ const HomeScreen = () => {
 
 
   return (
-    <View className="bg-gray-100 flex-1" style={{ paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0 }}>
-      <SafeAreaView className="px-4">
+      <SafeAreaView className="px-4 flex-1">
+    <View className="bg-gray-100" style={{ paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0 }}>
         <View className="flex-row pb-3 items-center space-x-2 ">
           <Image source={{
             uri: 'https://links.papareact.com/wru'
@@ -44,7 +44,7 @@ const HomeScreen = () => {
             className="h-7 w-7 bg-gray-300 p-4 rounded-full"
           />
 
-          <View className="flex-1">
+          <View className="flex-1 pt-3">
             <Text className="font-bold text-gray-400 text-xs">Deliver Now!</Text>
             <Text className="font-bold text-xl">
               Current Location
@@ -84,8 +84,8 @@ const HomeScreen = () => {
 
         </ScrollView>
 
-      </SafeAreaView>
     </View>
+      </SafeAreaView>
   )
 }
 

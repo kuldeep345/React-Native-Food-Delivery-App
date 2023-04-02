@@ -11,7 +11,7 @@ const initialState = {
         short_description:null,
         dishes:null,
         long:null,
-        la:null,
+        lat:null,
     }
 }
 
